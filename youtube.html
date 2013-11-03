@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playing with the Youtube's API</title>
+    <script type="text/javascript" src="js/vendor/swfobject.js"></script>   
+  </head>
+  <body>
+    <h1>Playing with the Youtube's API</h1>
+
+    <p>It shows in the console information when the user starts or stops the video.</p>
+
+    <!-- Youtube's API --> 
+    <div id="ytapiplayer">
+      You need Flash player 8+ and JavaScript enabled to view this video.
+    </div>
+
+    <script type="text/javascript" src="js/plugins/plugin.js"></script>
+    <script type="text/javascript">
+
+      // once loaded the player, its reference is taken to work with it
+      function onYouTubePlayerReady(playerId) {
+        if (!app.plugin.init(document.getElementById(app.plugin.atts.id))) {
+          console.log('An unexpected error happened');
+        }
+      } 
+
+      // embed the player in the current page
+      swfobject.embedSWF('http://www.youtube.com/v/'+app.plugin.conf.videoId+'?enablejsapi=1&playerapiid=ytplayer&version=3',
+                         'ytapiplayer', '425', '356', '8', null, null, app.plugin.params, app.plugin.atts);
+    </script>
+  </body>
+</html>
